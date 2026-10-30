@@ -44,6 +44,23 @@ Completed benchmark failures and interrupted/error attempts are retained. Consul
 the final turn for status, success, evaluator details, and capture completeness.
 Tau2 uses the same Qwen model for its agent, simulated user, and semantic judge.
 
+## Recorder timing caveat
+
+Runs recorded before the 2026-10-30 recorder correction used synchronous
+whole-file JSON checkpoints. Those writes could delay HTTP arrival timestamps
+and consume agent wall-clock budgets. Treat unversioned runs and runs marked
+`legacy-sync-snapshot-v1` as having unquantified recorder interference when
+studying latency or timeout outcomes. Original text, token IDs and timestamps
+are retained; no guessed timing correction is applied.
+
+Retained legacy attempts use `legacy-run-NN` folders within the same task; their
+original `run-NN` slots are rerun with the corrected recorder. Legacy attempts
+are additional data and do not count toward the five corrected runs per task.
+
+New runs identify `incremental-journal-v2` in the start turn. Incremental capture
+uses a background journal and one final JSON write, with recorder costs in the
+end turn. Timestamps remain application-level HTTP stream observations.
+
 ## Publication
 
 Credentials and private host identifiers are sanitized **in place**, restricted
