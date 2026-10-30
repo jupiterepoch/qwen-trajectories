@@ -1,0 +1,84 @@
+{
+  "model": "qwen3.8-27b-nvfp4",
+  "precision": "nvfp4",
+  "checkpoint": {
+    "repository": "RadixArk/Qwen3.8-27B-NVFP4",
+    "revision": "554ebba9b5f1b79dc11246341960360e6ef05ef4"
+  },
+  "server": {
+    "context_length": 262144,
+    "dtype": "auto",
+    "quantization": null,
+    "kv_cache_dtype": "fp8_e4m3",
+    "mamba_ssm_dtype": "float32",
+    "attention_backend": "flashinfer",
+    "chunked_prefill_size": 2048,
+    "max_running_requests": 1,
+    "tp_size": 1,
+    "dp_size": 1,
+    "pp_size": 1,
+    "mem_fraction_static": 0.9,
+    "reasoning_parser": "qwen3",
+    "tool_call_parser": "qwen3_coder",
+    "num_continuous_decode_steps": 1,
+    "speculative_algorithm": "EAGLE",
+    "speculative_num_steps": 3,
+    "speculative_eagle_topk": 1,
+    "speculative_num_draft_tokens": 4
+  },
+  "image": {
+    "reference": "lmsysorg/sglang@sha256:febfb971c7352570fc445c466ebd6ffc9d896024958e544a60f2137fd85856b1"
+  },
+  "benchmarks": {
+    "tau2": {
+      "source": "https://github.com/sierra-research/tau2-bench",
+      "commit": "da0835f6c67baef58bdda18f2a3b037dfb3a1754"
+    },
+    "terminal-bench": {
+      "source": "https://github.com/harbor-framework/terminal-bench-2",
+      "commit": "2fd12b88aafdd04a52c298e3940bcb189f9766d6"
+    },
+    "swe-bench-pro": {
+      "source": "https://github.com/scaleapi/SWE-bench_Pro-os",
+      "commit": "66f92766bba642462d4bbe5479e83f91f9211862"
+    }
+  },
+  "runners": {
+    "tau2": "2.0.0",
+    "harbor": "0.6.1"
+  },
+  "agent": {
+    "coding": "pinned Codex CLI 0.149.1",
+    "tau2": "native LLMAgent",
+    "tau2_simulated_user": "qwen3.8-27b-nvfp4",
+    "tau2_judge": "qwen3.8-27b-nvfp4"
+  },
+  "collection": {
+    "runs_per_task": 5,
+    "scope": "all_tasks",
+    "task_counts": {
+      "tau2": 2449,
+      "terminal-bench": 89,
+      "swe-bench-pro": 642
+    },
+    "planned_trajectories": 15900,
+    "selection_seed": 42,
+    "tau2_task_population": "English text; all registered airline, retail and telecom tasks; no split filtering",
+    "schedule": "one complete pass over tasks per repeat; benchmarks interleaved",
+    "nsight": false,
+    "token_timestamp_source": "native_stream_arrival"
+  },
+  "public_export": {
+    "compression": "zstd -19",
+    "policy_version": 1,
+    "raw_json_tracked": false,
+    "host_metadata_and_credentials_redacted": true,
+    "model_visible_text_and_tokens_unchanged": true,
+    "available_runs": {
+      "swe-bench-pro": 2,
+      "tau2": 5,
+      "terminal-bench": 4
+    },
+    "storage": "ordinary_git"
+  }
+}

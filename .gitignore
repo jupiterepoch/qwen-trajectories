@@ -1,0 +1,17 @@
+*
+!*/
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/THIRD_PARTY_NOTICES.md
+!/setup.json
+!/licenses/**
+!/tau2/**/trajectory.json.zst
+!/terminal-bench/**/trajectory.json.zst
+!/swe-bench-pro/**/trajectory.json.zst
+*.json
+!/setup.json
+*.tmp
+*.log
+.env
+.env.*
