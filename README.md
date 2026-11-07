@@ -1,8 +1,8 @@
 # Qwen trajectories
 
 Inference trajectories for Qwen3.8-27B in NVFP4 on public benchmarks. The collection
-targets five independent runs for every task in the pinned tau2, Terminal-Bench 2,
-and SWE-bench Pro V2 inventories. It is in progress; this repository contains the
+targets three independent runs per task for tau2 and Terminal-Bench 2, and five
+per SWE-bench Pro V2 task in the pinned inventories (10,824 canonical trajectories). It is in progress; this repository contains the
 finalized attempts shared so far.
 
 ## Layout
@@ -55,7 +55,7 @@ are retained; no guessed timing correction is applied.
 
 Retained legacy attempts use `legacy-run-NN` folders within the same task; their
 original `run-NN` slots are rerun with the corrected recorder. Legacy attempts
-are additional data and do not count toward the five corrected runs per task.
+are additional data and do not count toward the configured corrected runs per task.
 
 New runs identify `incremental-journal-v2` in the start turn. Incremental capture
 uses a background journal and one final JSON write, with recorder costs in the
@@ -77,3 +77,16 @@ diagnostics. No model weights or private project source code are included.
 Benchmark and upstream source licenses apply to their respective contents. See
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and `licenses/` for provenance and
 license notices; this repository does not relicense third-party source excerpts.
+
+## Collection priority and updates
+
+Finish all three Terminal-Bench repeats first (267 trajectories), then three tau2
+repeats (7,347 trajectories), then five SWE-bench Pro repeats (3,210 trajectories).
+Benchmarks run sequentially in that order. Existing completed and legacy
+attempts are retained; sampling settings and per-task budgets are unchanged.
+
+Sanitized archives are published about hourly as an amended snapshot of main,
+using force-with-lease. Upload size is measured before transmission. Public-data
+checks cover every new or changed Git blob; unchanged blobs reuse the same
+review only while the review policy and known credential set remain unchanged.
+Raw JSON stays ignored by Git.
