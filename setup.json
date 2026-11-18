@@ -54,31 +54,34 @@
     "tau2_judge": "qwen3.8-27b-nvfp4"
   },
   "collection": {
-    "runs_per_task": 5,
+    "runs_per_task": {
+      "tau2": 3,
+      "terminal-bench": 3,
+      "swe-bench-pro": 5
+    },
     "scope": "all_tasks",
     "task_counts": {
       "tau2": 2449,
       "terminal-bench": 89,
       "swe-bench-pro": 642
     },
-    "planned_trajectories": 15900,
+    "planned_trajectories": 10824,
     "selection_seed": 42,
     "tau2_task_population": "English text; all registered airline, retail and telecom tasks; no split filtering",
-    "schedule": "one complete pass over tasks per repeat; benchmarks interleaved",
+    "schedule": "sequential benchmarks in priority order; full task pass per repeat",
+    "benchmark_priority": [
+      "terminal-bench",
+      "tau2"
+    ],
     "nsight": false,
     "token_timestamp_source": "native_stream_arrival"
   },
   "public_export": {
     "compression": "zstd -19",
+    "storage": "ordinary_git",
     "policy_version": 1,
     "raw_json_tracked": false,
     "host_metadata_and_credentials_redacted": true,
-    "model_visible_text_and_tokens_unchanged": true,
-    "available_runs": {
-      "swe-bench-pro": 2,
-      "tau2": 5,
-      "terminal-bench": 4
-    },
-    "storage": "ordinary_git"
+    "model_visible_text_and_tokens_unchanged": true
   }
 }
